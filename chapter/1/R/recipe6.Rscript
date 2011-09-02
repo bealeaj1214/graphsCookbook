@@ -1,0 +1,31 @@
+# Adjusting X and Y axes limits
+
+require("ggplot2")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+require("tikzDevice")
+
+# Modify plot1 to demonstrate how to adjust the axes
+plot13 <- ggplot(cars)+geom_point(aes(x=speed,y=dist)) +
+  xlim(c(0,30))+ ylim(c(0,150))+ theme_bw()
+
+# use expand argument in scales to control the extra space expansion,
+# in this case we want exact axes so we set both multiplicative and
+# additive expansion factors to zero
+
+plot14 <-  ggplot(cars)+geom_point(aes(x=speed,y=dist)) +
+  scale_x_continuous("cars$speed",limits=c(0,30),expand=c(0,0)) +
+  scale_y_continuous("cars$dist",limits=c(0,150),expand=c(0,0))+ 
+  theme_bw()   +
+  opts(axis.title.x = theme_text(vjust=-0.25))
+
+
+# From the you learn something new everyday category
+
+#  reading through http://had.co.nz/ggplot2/scale_continuous.html page I noticed the scale_y_reverse() function.  Which of course is not documented - suprise, surprise. You need to use the limits backwards when using scale_reverse()  
+
+plot15 <- ggplot(cars)+geom_point(aes(x=speed,y=dist)) +
+   scale_x_reverse(limits=c(30,0))+ ylim(c(0,150))+ theme_bw()

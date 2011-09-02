@@ -1,0 +1,20 @@
+require("ggplot2")
+require("tikzDevice")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+
+plot1<-ggplot(cars)+geom_point(aes(x=speed,y=dist)) +theme_bw()
+
+#  Use the scale_?_continuous to set the axis title and limits at the
+#  same time, xlab and xlim can be used to set them separately
+
+plot2<-ggplot(cars)+geom_point(aes(x=speed,y=dist,color="red",shape=19)) +
+scale_x_continuous("Speed (miles per hour)",limits=c(0,30)) +
+scale_y_continuous("Distance travelled (miles)",limits=c(0,140))+ 
+scale_colour_identity() +
+theme_bw()	+	
+opts(title="Relationship between car distance & speed",
+			 legend.position = "none")

@@ -1,0 +1,39 @@
+# Creating  box plots
+
+require("ggplot2")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+require("tikzDevice")
+
+
+metals <-read.csv("../data/metals.csv")
+
+# coerce Data into ggplot friendly format - need the various metals a
+# factor variable in the long data format
+
+metals.melt <-melt(metals,id=c("Source"))
+
+
+plot11 <- ggplot(metals.melt,aes(variable,value))+geom_boxplot() +
+  xlab("Metals") + ylab("Atmospheric Concentration in ng per cubic metre") +
+  opts(title="Atmospheric Metal Concentrations in London") +  theme_bw() +
+  opts(axis.title.x = theme_text(vjust=-0.25)) 
+
+# use vjust to lower the x-axis title text which was too close to
+# x-axis label text
+
+# Remember always apply the theme_text adjust as last item
+
+
+copper <-read.csv("../data/copper_site.csv")
+
+plot12 <- ggplot(copper,aes(Source,Cu)) + geom_boxplot() +
+  xlab("Measurement Site") +
+  ylab("Atmospheric Concentration of Copper in ng per cubic metre") +
+  opts(title="Atmospheric Copper Concentrations in London") +  theme_bw() +
+  opts(axis.title.x = theme_text(vjust=-0.25))
+
+

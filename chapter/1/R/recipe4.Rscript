@@ -1,0 +1,28 @@
+# Creating histograms and density plots sections
+
+require("ggplot2")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+require("tikzDevice")
+
+# We need to coerce the data into a ggplot friendly format
+
+data.hist <-data.frame(x=rnorm(1000))
+
+plot7<-ggplot(data.hist,aes(x)) + geom_histogram() + xlab("rnorm(1000)") + ylab("Frequency")+theme_bw()
+
+hist.look<-scale_y_continuous("Frequency")
+
+
+data.islands<-as.data.frame(islands)
+plot8<-ggplot(data.islands,aes(islands)) +geom_histogram() +xlab("islands")+ hist.look +theme_bw()
+
+# Create new dataset
+data.hist.100 <-data.frame(x=rnorm(100))
+#create a density plot
+plot9<-ggplot(data.hist.100,aes(x)) + geom_density() + xlab("rnorm(100)") + ylab("Density")+theme_bw()
+
+plot10<-ggplot(data.hist,aes(x)) + geom_density() + xlab("rnorm(1000)") + ylab("Density")+theme_bw()

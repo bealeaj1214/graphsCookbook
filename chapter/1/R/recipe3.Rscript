@@ -1,0 +1,33 @@
+require("ggplot2")
+require("tikzDevice")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+
+# read the data as is
+sales <- read.csv("../data/citysales.csv",as.is=TRUE)
+
+# use our own coding of the City column as factor preserving the
+# original data order
+sales$City=factor(sales$City,levels=sales$City)
+
+#head(sales)
+
+#str(sales)
+
+plot3 <- ggplot(sales) +geom_bar(aes(x=City,y=ProductA)) + theme_bw()
+
+plot4 <- ggplot(sales) +geom_bar(aes(x=City,y=ProductA))+ coord_flip() + theme_bw()
+
+
+# To make plots 5 and 6 we need to alter the format of the data to
+# long format since ggplot has very strong opinions on data layout
+
+sales.melt<-melt(sales,id=c("City"))
+
+plot5 <-ggplot(sales.melt) +geom_bar(aes(x=variable,y=value,fill=City),position="dodge")+ xlab("") +ylab("")+ theme_bw()
+
+# make the same graph with horizontal bars
+plot6 <-ggplot(sales.melt) +geom_bar(aes(x=variable,y=value,fill=City),position="dodge")+ coord_flip()+ xlab("") +ylab("") +theme_bw()
