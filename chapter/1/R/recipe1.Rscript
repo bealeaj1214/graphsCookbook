@@ -13,8 +13,10 @@ plot1<-ggplot(cars)+geom_point(aes(x=speed,y=dist)) +theme_bw()
 
 plot2<-ggplot(cars)+geom_point(aes(x=speed,y=dist,color="red",shape=19)) +
 scale_x_continuous("Speed (miles per hour)",limits=c(0,30)) +
-scale_y_continuous("Distance travelled (miles)",limits=c(0,140))+ 
+scale_y_continuous("Distance traveled (miles)",limits=c(0,140))+ 
 scale_colour_identity() +
 theme_bw()	+	
 opts(title="Relationship between car distance & speed",
 			 legend.position = "none")
+
+

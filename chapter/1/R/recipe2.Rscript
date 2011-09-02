@@ -1,0 +1,26 @@
+# Creating line graphs
+
+require("ggplot2")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+options(digits=6)
+require("tikzDevice")
+
+
+sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
+
+# ggplots datetime scale needs POSIXct datetimes
+sales$date <- as.POSIXct(sales$date,format="%d/%m/%Y")
+
+plot2.1 <- ggplot(sales) +
+  geom_line(aes(date,units)) +
+  scale_x_datetime(major="5 days") + theme_bw()
+
+
+
+plot2.2 <- ggplot(sales) +
+  geom_line(aes(date,units,colour="red")) +
+  scale_x_datetime(major="5 days") + theme_bw() +
+  opts( legend.position ="none")
