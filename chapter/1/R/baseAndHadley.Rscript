@@ -1,0 +1,22 @@
+require(gridBase)
+require(ggplot2)
+
+## layout function
+vplayout <- function(x,y) { viewport(layout.pos.row=x, layout.pos.col=y)  }
+
+opar <- par(no.readonly = TRUE)
+grid.newpage()
+
+# two columns, one row
+unit. <- unit(c(1,1), c("null","null"))
+pushViewport(viewport(layout = grid.layout(1, 2, widths = unit.)))
+
+# draw green graph in first column (viewport A)
+pushViewport(viewport(layout.pos.col = 1, name = "A"))
+par(fig = gridFIG()); par(new = TRUE)
+plot(1:10, col = "green", pch = 20)
+upViewport(1)
+
+plot1<-ggplot(cars)+geom_point(aes(x=speed,y=dist)) +theme_bw()
+
+print(plot1,vp= vplayout(1,2))
