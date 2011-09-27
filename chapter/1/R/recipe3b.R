@@ -8,7 +8,7 @@ sales <- read.csv("../data/citysales.csv",as.is=TRUE)
 #main.text="Unit Sales in the month\nof January 2010"
 #ylab.text="Number of units sold"
 
-base.recipe.3a <-function() {
+base.recipe.3b <-function() {
   barplot(sales$ProductA,names.arg= sales$City,col="black",horiz=TRUE)
 }
 
@@ -34,9 +34,9 @@ sales$City2=factor(sales$City,levels=sales$City)
 
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
-plot3.1 <- ggplot(sales) +geom_bar(aes(x=City2,y=ProductA)) +
+plot3b <- ggplot(sales) +geom_bar(aes(x=City2,y=ProductA)) +
   theme_bw() +xlab("")+ylab("") +coord_flip()+
   opts(plot.margin = unit(c(2, 1, 2, 1), "lines"))
    
 
-doComboPlot(doBasePlot=base.recipe.3a,gplot=plot3.1)
+doComboPlot(doBasePlot=base.recipe.3b,gplot=plot3b)

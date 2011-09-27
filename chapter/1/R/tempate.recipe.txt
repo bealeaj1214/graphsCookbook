@@ -20,8 +20,11 @@ base.recipe.2a <-function() {
 # remove lengend
 #  opts(title=main.text, legend.position = "none") 
 
-#  push x-axis down
+#  push x-axis title down
 #  opts(axis.title.x = theme_text(vjust=-0.25))
+
+# rotate the x-axis text
+#   opts(axis.text.x = theme_text(angle=30,hjust=1,vjust=0.5))	
 
 #  move y-axis title to left
 #  opts( axis.title.y = theme_text(angle=90,vjust=0.02))

@@ -1,21 +1,24 @@
 source("comboPlot.R")
 
 # import data
+#sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
 sales <- read.csv("../data/citysales.csv",as.is=TRUE)
-
 #define common text
 
 #main.text="Unit Sales in the month\nof January 2010"
 #ylab.text="Number of units sold"
 
-base.recipe.3a <-function() {
-  barplot(sales$ProductA,names.arg= sales$City,col="black")
+base.recipe.3c <-function() {
+  barplot(as.matrix(sales[,2:4]),beside=TRUE,
+          legend=sales$City,
+          col=heat.colors(5),
+          border="white")
 }
 
 # ggplot data shaping
-# use our own coding of the City column as factor preserving the
-# original data order
 sales$City2=factor(sales$City,levels=sales$City)
+sales.melt=melt(sales,id=c("City2"),
+  measure.vars=c("ProductA","ProductB","ProductC"))
 
 
 ## ggplot
@@ -34,10 +37,7 @@ sales$City2=factor(sales$City,levels=sales$City)
 
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
-plot3.1 <- ggplot(sales) +geom_bar(aes(x=City2,y=ProductA)) +
-  theme_bw() +xlab("")+ylab("") +
-  opts(axis.text.x = theme_text(angle=45),
-       plot.margin = unit(c(2, 1, 2, 1), "lines"))
-   
 
-doComboPlot(doBasePlot=base.recipe.3a,gplot=plot3.1)
+plot3c <-ggplot(sales.melt) +geom_bar(aes(x=variable,y=value,fill=City2),position="dodge")+ xlab("") +ylab("")+ theme_bw()+ scale_fill_brewer(name="City")
+
+doComboPlot(doBasePlot=base.recipe.3c,gplot=plot3c)

@@ -1,0 +1,92 @@
+\documentclass[10pt]{article}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xfrac}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[landscape]{geometry}
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{afterpage}
+\usepackage[small,compact]{titlesec}
+%\usepackage[pdftex]{graphicx}
+%\DeclareGraphicsExtensions{.png,.pdf}
+
+% attempt to use fontspec to select fonts 
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+
+
+\title{Chapter 1 from R Graphics Cookbook }
+\author{Alan Beale}
+\date{Spetember 24, 2011}
+
+%% http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}   
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+ \addtolength{\textfloatsep}{-.5\textfloatsep}
+ \addtolength{\dbltextfloatsep}{-.5\dbltextfloatsep}
+
+\begin{document}
+
+\sffamily 
+\maketitle
+
+\section{Why}
+
+\subsection{Recipe 1}
+
+\subsubsection{Recipe 1b}
+%%\begin{figure}
+%%\centering
+\input{recipe1b}\\
+%%\end{figure}
+ Simple scatter graph
+%%\afterpage{\clearpage}
+\subsection{Recipe 2}
+
+\subsubsection{Recipe 2a}
+%\vspace{-20pt}
+%%\begin{figure}
+%%\centering
+\input{recipe2a} \\
+%%\end{figure}
+ line graph
+%%\afterpage{\clearpage}
+\subsection{Recipe 3}
+
+\subsubsection{Recipe 3a}
+%%\begin{figure}
+%%\centering
+\input{recipe3a}
+%%\caption{recipe 3a}
+%%\end{figure}
+ bar chart
+\subsubsection{Recipe 3b}
+%%\begin{figure}
+%%\centering
+\input{recipe3b}
+%%\end{figure}
+horizontal bar chart
+\subsubsection{Recipe 3c}
+%%\begin{figure}
+%%\centering
+\input{recipe3c}
+%%\end{figure}
+
+%%\begin{figure}
+%%\centering
+\input{recipe3d}
+%%\end{figure}
+
+
+\end{document}

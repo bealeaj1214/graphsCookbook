@@ -5,7 +5,8 @@ require(ggplot2)
 ## layout function
 vplayout <- function(x,y) { viewport(layout.pos.row=x, layout.pos.col=y)  }
 
-doComboPlot<-function(doBasePlot,gplot){
+doComboPlot<-function(doBasePlot,gplot,...){
+  oldpar <- par(no.readonly = TRUE)
   # clean and clear out old plots
   grid.newpage()
   #setup widths parameter for grid.layout call
@@ -22,14 +23,14 @@ doComboPlot<-function(doBasePlot,gplot){
 
 
   # use do.call to force exectution of base graphics functions  with empty args list
-  do.call(doBasePlot,list())
+  doBasePlot(...)
 
   upViewport(1)
 
   # from ggplot book and help list
   # print the ggplot and pass a viewport
   print(gplot,vp= vplayout(1,2))
-
+  par(oldpar)
 }
 
 

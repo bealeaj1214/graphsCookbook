@@ -3,6 +3,7 @@ source("comboPlot.R")
 sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
 main.text="Unit Sales in the month\nof January 2010"
 ylab.text="Number of units sold"
+
 base.recipe.2a <-function() {
   plot(sales$units~as.Date(sales$date,"%d/%m/%y"),
        type="l",
