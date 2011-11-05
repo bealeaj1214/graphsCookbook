@@ -22,7 +22,7 @@
 %%\newcommand{\placeRecipe}[1]{\noindent \begin{quote}\input{#1}\end{quote}}
 %%\newcommand{\placeRecipe}[1]{\begin{minipage}[h]{\textwidth}\vspace{-144pt}\input{#1}\end{minipage}}
 \newcommand{\placeRecipe}[1]{\bigskip \noindent \input{#1} \bigskip}
-\newcommand{\testRecipe}[1]{\begin{figure} \centering \input{#1} \end{figure}}
+\newcommand{\testRecipe}[1]{\begin{figure}[!htb] \centering \input{#1} \end{figure}}
 \title{Chapter 1 from R Graphics Cookbook }
 \author{Alan Beale}
 \date{Spetember 24, 2011}
@@ -44,15 +44,22 @@
 \sffamily 
 \maketitle
 
-%%\section{Why}
+\section{Why}
 
+\section{Scatter plot}
+\Large{Recipe 1a}
+\placeRecipe{recipe1a}
 
 \Large{Recipe 1b}
-\placeRecipe{recipe1b}
+\testRecipe{recipe1b}
 \\Simple scatter graph 
+\clearpage
+\section{Line graph}
 \Large{Recipe 2a}
-\placeRecipe{recipe2a} 
+\testRecipe{recipe2a} 
 %% line graph\\
+\clearpage
+\section{ Bar charts}
 \Large{Recipe 3a}
 \testRecipe{recipe3a}
 bar chart\\
