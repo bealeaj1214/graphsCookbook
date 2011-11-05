@@ -8,7 +8,7 @@ vplayout <- function(x,y) { viewport(layout.pos.row=x, layout.pos.col=y)  }
 doComboPlot<-function(doBasePlot,gplot,...){
   oldpar <- par(no.readonly = TRUE)
   # clean and clear out old plots
-  grid.newpage()
+  grid.newpage(recording=FALSE)
   #setup widths parameter for grid.layout call
   unit. <- unit(c(1,1), c("null","null"))
   # create a layout 1 row, two columns

@@ -19,16 +19,19 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
 
-
+%%\newcommand{\placeRecipe}[1]{\noindent \begin{quote}\input{#1}\end{quote}}
+%%\newcommand{\placeRecipe}[1]{\begin{minipage}[h]{\textwidth}\vspace{-144pt}\input{#1}\end{minipage}}
+\newcommand{\placeRecipe}[1]{\bigskip \noindent \input{#1} \bigskip}
+\newcommand{\testRecipe}[1]{\begin{figure} \centering \input{#1} \end{figure}}
 \title{Chapter 1 from R Graphics Cookbook }
 \author{Alan Beale}
 \date{Spetember 24, 2011}
 
 %% http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html
-\renewcommand\floatpagefraction{.9}
-\renewcommand\topfraction{.9}
-\renewcommand\bottomfraction{.9}
-\renewcommand\textfraction{.1}   
+%%\renewcommand\floatpagefraction{.9}
+%%\renewcommand\topfraction{.9}
+%%\renewcommand\bottomfraction{.9}
+%%\renewcommand\textfraction{.1}   
 \setcounter{totalnumber}{50}
 \setcounter{topnumber}{50}
 \setcounter{bottomnumber}{50}
@@ -41,52 +44,23 @@
 \sffamily 
 \maketitle
 
-\section{Why}
+%%\section{Why}
 
-\subsection{Recipe 1}
 
-\subsubsection{Recipe 1b}
-%%\begin{figure}
-%%\centering
-\input{recipe1b}\\
-%%\end{figure}
- Simple scatter graph
-%%\afterpage{\clearpage}
-\subsection{Recipe 2}
-
-\subsubsection{Recipe 2a}
-%\vspace{-20pt}
-%%\begin{figure}
-%%\centering
-\input{recipe2a} \\
-%%\end{figure}
- line graph
-%%\afterpage{\clearpage}
-\subsection{Recipe 3}
-
-\subsubsection{Recipe 3a}
-%%\begin{figure}
-%%\centering
-\input{recipe3a}
-%%\caption{recipe 3a}
-%%\end{figure}
- bar chart
-\subsubsection{Recipe 3b}
-%%\begin{figure}
-%%\centering
-\input{recipe3b}
-%%\end{figure}
-horizontal bar chart
-\subsubsection{Recipe 3c}
-%%\begin{figure}
-%%\centering
-\input{recipe3c}
-%%\end{figure}
-
-%%\begin{figure}
-%%\centering
-\input{recipe3d}
-%%\end{figure}
-
+\Large{Recipe 1b}
+\placeRecipe{recipe1b}
+\\Simple scatter graph 
+\Large{Recipe 2a}
+\placeRecipe{recipe2a} 
+%% line graph\\
+\Large{Recipe 3a}
+\testRecipe{recipe3a}
+bar chart\\
+\Large{Recipe 3b}
+\testRecipe{recipe3b}
+horizontal bar chart\\
+\Large{Recipe 3c}
+\testRecipe{recipe3c}
+\placeRecipe{recipe3d}
 
 \end{document}
