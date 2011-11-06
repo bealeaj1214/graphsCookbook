@@ -17,7 +17,8 @@ base.recipe.2a <-function() {
 
 ## ggplot
 
-# remove lengend
+# Remember apply opts post theme
+# remove legend
 #  opts(title=main.text, legend.position = "none") 
 
 #  push x-axis title down

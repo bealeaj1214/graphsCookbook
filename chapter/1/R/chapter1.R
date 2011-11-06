@@ -95,3 +95,16 @@ recipe3d<-function(){
 rollPicture("recipe3d",recipe3d)
 
 
+source("recipe4a.R")
+
+rollPicture("recipe4a",recipe4a,rp.sanitize=TRUE)
+
+
+source("recipe4b.R")
+
+rollPicture("recipe4b",recipe4b)
+
+source("recipe4c.R")
+
+rollPicture("recipe4c",recipe4c)
+
