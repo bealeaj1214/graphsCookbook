@@ -17,5 +17,7 @@ export PDFLATEX
 
 chapter1.pdf :: chapter1.tex build/*.tex
 
+chapter1.tex  :: chapter1.R
+	Rscript $< && touch chapter1.tex
 
 all:: chapter1.pdf
