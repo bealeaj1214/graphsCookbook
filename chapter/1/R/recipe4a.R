@@ -18,8 +18,8 @@ base.recipe.4a <-function() {
 
 ## ggplot
 
-# remove lengend
-#  opts(title=main.text, legend.position = "none") 
+# remove legend
+#  opts(title=main.text, legend.position = "none") `
 
 #  push x-axis title down
 #  opts(axis.title.x = theme_text(vjust=-0.25))
@@ -36,7 +36,11 @@ base.recipe.4a <-function() {
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
 
-plot4a<- ggplot(data.hist,aes(x)) + geom_histogram() + xlab("rnorm(1000)") + ylab("Frequency")+theme_bw()
+plot4a<- ggplot(data.hist,aes(x)) + geom_histogram() +
+  xlab("rnorm(1000)") + ylab("Frequency")+ theme_bw()
+  opts(axis.title.x = theme_text(vjust=-0.25)) 
+  
 
-
-doComboPlot(doBasePlot=base.recipe.4a,gplot=plot4a)
+recipe4a<-function() {
+  doComboPlot(doBasePlot=base.recipe.4a,gplot=plot4a)
+}

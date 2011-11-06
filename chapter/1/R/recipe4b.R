@@ -35,7 +35,13 @@ data.islands<-as.data.frame(islands)
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
 
-plot4b<-ggplot(data.islands,aes(islands)) +geom_histogram() +xlab("islands")+ hist.look +theme_bw()
+hist.look<-scale_y_continuous("Frequency")
 
+plot4b<-ggplot(data.islands,aes(islands)) +geom_histogram() +
+  xlab("islands")+ hist.look +
+  theme_bw() +opts(axis.title.x = theme_text(vjust=-0.25),
+                   axis.title.y = theme_text(angle=90,vjust=0.02)) 
 
-doComboPlot(doBasePlot=base.recipe.4b,gplot=plot4b)
+recipe4b<-function(){
+  doComboPlot(doBasePlot=base.recipe.4b,gplot=plot4b)
+}
