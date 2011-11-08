@@ -23,6 +23,7 @@ theme_bw()      +
 opts(title="Relationship between car \ndistance \\& speed",
                          legend.position = "none") +
   opts(axis.title.x = theme_text(vjust=-0.25),
+       plot.title = theme_text(vjust= 1.25,face="bold"),
        plot.margin = unit(c(1, 2, 2, 1), "lines"))
 
 
