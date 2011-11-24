@@ -1,0 +1,44 @@
+source("comboPlot.R")
+
+# import data
+#sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
+
+#define common text
+
+#main.text="Unit Sales in the month\nof January 2010"
+#ylab.text="Number of units sold"
+
+# can subsitiute mtcars[,1:3] for iris[,1:4]
+base.recipe.8a <-function() {
+  pairs(iris[,1:4])
+}
+
+# ggplot data shaping
+
+
+## ggplot
+
+# Remember apply opts post theme
+# remove legend
+#  opts(title=main.text, legend.position = "none") 
+
+#  push x-axis title down
+#  opts(axis.title.x = theme_text(vjust=-0.25))
+
+# rotate the x-axis text
+#   opts(axis.text.x = theme_text(angle=30,hjust=1,vjust=0.5))	
+
+#  move y-axis title to left
+#  opts( axis.title.y = theme_text(angle=90,vjust=0.02))
+
+#  increase space between title and graph - bold title text
+#  opts(plot.title = theme_text(vjust= 1.25,face="bold"))
+
+#   adjust space around graph
+#  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
+
+plot8.1<-plotmatrix(iris[, 1:4]) + theme_bw()
+
+recipe8a <-function(){
+  doComboPlot(doBasePlot=base.recipe.8a,gplot=plot8.1)
+}

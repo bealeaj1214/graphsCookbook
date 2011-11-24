@@ -61,6 +61,9 @@ plot7.2 <-ggplot(genes.melt) +
   scale_x_discrete("",expand=c(0,0)) +
   scale_y_discrete("",expand=c(0,0))+
   theme_bw() +
-  opts(axis.text.x = theme_text(angle=90))
+  opts(axis.text.x = theme_text(angle=90),
+       title=main.title,
+       plot.title =
+       theme_text(vjust= 0.75,face="bold",size=base_font_size+6))
 
 #doComboPlot(doBasePlot=base.recipe.2a,gplot=plot2.1)

@@ -73,6 +73,18 @@ rollPicture<-function(baseName,plotFunc,
  system(paste("./tikzDeviceRepair.sh" ,filename))
 }
 
+simplePicture<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".tex",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ tikz(file=filename,standAlone=rp.standAlone,width=rp.width,height=rp.height,sanitize=rp.sanitize)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+}
 @ 
 \section{Scatter plot}
 <<rp1a,echo=F,results=hide>>=
@@ -135,9 +147,18 @@ horizontal bar chart\\
 \testRecipe{recipe4b}
 \testRecipe{recipe4c}
 
+\clearpage
 \section{Creating box plots}
+<<rp5a,echo=F,results=hide>>=
+
+source("recipe5a.R")
+
+rollPicture("recipe5a",recipe5a)
+@ 
+\testRecipe{recipe5a} 
 \section{Adjusting X and Y axes limits}
 
+\clearpage
 \section{Heatmaps}
 <<rcp7a,echo=F,results=hide>>=
 source("recipe7a.R")
@@ -155,7 +176,7 @@ source("recipe7b.R")
 ggRecipe7b<-function(){
   print(plot7.2)
 }
-rollPicture("baserecipe7b",base.recipe.7b)
+rollPicture("baserecipe7b",base.recipe.7b,rp.width=4.5,rp.height=5)
 
 rollPicture("ggRecipe7b",ggRecipe7b,rp.width=4.5,rp.height=5)
 @ 
@@ -163,5 +184,24 @@ rollPicture("ggRecipe7b",ggRecipe7b,rp.width=4.5,rp.height=5)
 \testRecipe{baserecipe7b}
 
 \testRecipe{ggRecipe7b}
+
+\clearpage
+\section{Pair Plots}
+<<rcp8a,echo=F,results=hide>>=
+source("recipe8a.R")
+
+ggRecipe8a<-function(){
+  print(plot8.1)
+}
+
+simplePicture("baserecipe8a",base.recipe.8a,rp.width=4.5,rp.height=5)
+
+simplePicture("ggRecipe8a",ggRecipe8a,rp.width=4.5,rp.height=5)
+@ 
+
+\testRecipe{baserecipe8a}
+%% Need to use clear page to manage latex memory
+\clearpage
+\testRecipe{ggRecipe8a}
 
 \end{document}
