@@ -37,7 +37,7 @@ data.islands<-as.data.frame(islands)
 
 hist.look<-scale_y_continuous("Frequency")
 
-plot4b<-ggplot(data.islands,aes(islands)) +geom_histogram() +
+plot4b<-ggplot(data.islands,aes(islands)) +geom_histogram(binwidth=diff(range(islands))/15) +
   xlab("islands")+ hist.look +
   theme_bw() +opts(axis.title.x = theme_text(vjust=-0.25),
                    axis.title.y = theme_text(angle=90,vjust=0.02)) 

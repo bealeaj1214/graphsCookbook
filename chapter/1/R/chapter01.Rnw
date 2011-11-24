@@ -142,6 +142,20 @@ horizontal bar chart\\
 \placeRecipe{recipe3d}
 \clearpage
 \section{Histograms }
+<<histograms,echo=F,results=hide>>=
+source("recipe4a.R")
+
+rollPicture("recipe4a",recipe4a,rp.sanitize=TRUE)
+
+source("recipe4b.R")
+
+rollPicture("recipe4b",recipe4b)
+
+source("recipe4c.R")
+
+rollPicture("recipe4c",recipe4c)
+
+@ 
 \testRecipe{recipe4a}
 
 \testRecipe{recipe4b}
@@ -156,6 +170,14 @@ source("recipe5a.R")
 rollPicture("recipe5a",recipe5a)
 @ 
 \testRecipe{recipe5a} 
+
+<<rp5b,echo=F,results=hide>>=
+source("recipe5b.R")
+rollPicture("recipe5b",recipe5b)
+@ 
+\testRecipe{recipe5b}
+
+\clearpage
 \section{Adjusting X and Y axes limits}
 
 \clearpage

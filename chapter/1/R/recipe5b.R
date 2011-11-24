@@ -2,14 +2,26 @@ source("comboPlot.R")
 
 # import data
 #sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
+copper <-read.csv("../data/copper_site.csv")
+
+
+
 
 #define common text
+xlab.text= "Measurement Site"
+ylab.text="Atmospheric Concentration of Copper in ng per cubic metre"
+ylab.text2="Atmospheric Concentration of Copper\nin ng per cubic metre"
+main.text="Atmospheric Copper Concentrations in London"
+main.text2="Atmospheric Copper Concentrations\nin London"
 
 #main.text="Unit Sales in the month\nof January 2010"
 #ylab.text="Number of units sold"
 
-base.recipe.2a <-function() {
-
+base.recipe.5b <-function() {
+  boxplot(copper$Cu~copper$Source,
+          xlab=xlab.text,
+          ylab=ylab.text2,
+          main=main.text2)
 }
 
 # ggplot data shaping
@@ -36,6 +48,13 @@ base.recipe.2a <-function() {
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
 
-recipe2a <-function() {
-doComboPlot(doBasePlot=base.recipe.2a,gplot=plot2.1)
+plot5.2 <- ggplot(copper,aes(Source,Cu)) + geom_boxplot() +
+  xlab(xlab.text) +
+  ylab(ylab.text2) +
+  opts(title=main.text2) +  theme_bw() +
+  opts(axis.title.x = theme_text(vjust=-0.25))
+
+
+recipe5b <-function() {
+  doComboPlot(doBasePlot=base.recipe.5b,gplot=plot5.2)
 }

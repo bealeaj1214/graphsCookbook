@@ -2,6 +2,7 @@ source("comboPlot.R")
 
 # import data
 #sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
+set.seed(15)
 x=rnorm(1000)
 data.hist <-data.frame(x=x)
 x.density<-density(x)

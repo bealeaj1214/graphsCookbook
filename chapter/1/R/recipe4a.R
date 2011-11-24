@@ -2,6 +2,7 @@ source("comboPlot.R")
 
 # import data
 #sales <- read.csv("../data/dailysales.csv",as.is=TRUE)
+set.seed(5)
 data.hist <-data.frame(x=rnorm(1000))
 
 #define common text
@@ -36,7 +37,8 @@ base.recipe.4a <-function() {
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
 
-plot4a<- ggplot(data.hist,aes(x)) + geom_histogram() +
+plot4a<- ggplot(data.hist,aes(x)) +
+  geom_histogram(binwidth=(diff(range(data.hist$x))/15)) +
   xlab("rnorm(1000)") + ylab("Frequency")+ theme_bw()
   opts(axis.title.x = theme_text(vjust=-0.25)) 
   
