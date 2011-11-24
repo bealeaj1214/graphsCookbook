@@ -1,0 +1,167 @@
+\documentclass[10pt]{article}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xfrac}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[landscape]{geometry}
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{afterpage}
+\usepackage[small,compact]{titlesec}
+%\usepackage[pdftex]{graphicx}
+%\DeclareGraphicsExtensions{.png,.pdf}
+
+% attempt to use fontspec to select fonts 
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+
+%%\newcommand{\placeRecipe}[1]{\noindent \begin{quote}\input{#1}\end{quote}}
+%%\newcommand{\placeRecipe}[1]{\begin{minipage}[h]{\textwidth}\vspace{-144pt}\input{#1}\end{minipage}}
+\newcommand{\placeRecipe}[1]{\bigskip \noindent \input{#1} \bigskip}
+\newcommand{\testRecipe}[1]{\begin{figure}[!htb] \centering \input{#1} \end{figure}}
+\title{Chapter 1 from R Graphics Cookbook }
+\author{Alan Beale}
+\date{Spetember 24, 2011}
+
+%% http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html
+%%\renewcommand\floatpagefraction{.9}
+%%\renewcommand\topfraction{.9}
+%%\renewcommand\bottomfraction{.9}
+%%\renewcommand\textfraction{.1}   
+%%\setcounter{totalnumber}{50}
+%%\setcounter{topnumber}{50}
+%%\setcounter{bottomnumber}{50}
+
+%%\addtolength{\textfloatsep}{-.5\textfloatsep}
+%%\addtolength{\dbltextfloatsep}{-.5\dbltextfloatsep}
+
+\begin{document}
+
+\sffamily 
+\maketitle
+
+<<setup, echo=F, results=hide>>=
+require("tikzDevice")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+
+width=7
+height=4
+
+@ 
+\section{Why}
+<<setup2,echo=FALSE,results=hide>>=
+
+rollPicture<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".tex",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ tikz(file=filename,standAlone=rp.standAlone,width=rp.width,height=rp.height,sanitize=rp.sanitize)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+ cat("finished",filename , "\n")
+ system(paste("./tikzDeviceRepair.sh" ,filename))
+}
+
+@ 
+\section{Scatter plot}
+<<rp1a,echo=F,results=hide>>=
+source("recipe1a.R")
+recipe1a<-function(){
+  doComboPlot(doBasePlot=base.recipe.1a,gplot=plot1a)
+}
+
+rollPicture("recipe1a",recipe1a, rp.sanitize=TRUE)
+
+@ 
+\Large{Recipe 1a}
+\placeRecipe{recipe1a}
+
+<<rp1b,echo=F,results=hide>>=
+source("recipe1b.R")
+
+recipe1b<-function(){
+  doComboPlot(doBasePlot=base.recipe.1b,gplot=plot1b)
+}
+
+rollPicture("recipe1b",recipe1b)
+
+@ 
+\Large{Recipe 1b}
+\testRecipe{recipe1b}
+\\Simple scatter graph 
+\clearpage
+<<rp2a,echo=F,results=hide>>=
+
+source("recipe2a.R")
+
+recipe2a<-function(){
+  doComboPlot(doBasePlot=base.recipe.2a,gplot=plot2.1)
+}
+
+rollPicture("recipe2a",recipe2a)
+
+@ 
+\section{Line graph}
+\Large{Recipe 2a}
+\testRecipe{recipe2a} 
+%% line graph\\
+\clearpage
+\section{ Bar charts}
+\Large{Recipe 3a}
+\testRecipe{recipe3a}
+bar chart\\
+\Large{Recipe 3b}
+\testRecipe{recipe3b}
+horizontal bar chart\\
+\clearpage
+\Large{Recipe 3c}
+\testRecipe{recipe3c}
+\placeRecipe{recipe3d}
+\clearpage
+\section{Histograms }
+\testRecipe{recipe4a}
+
+\testRecipe{recipe4b}
+\testRecipe{recipe4c}
+
+\section{Creating box plots}
+\section{Adjusting X and Y axes limits}
+
+\section{Heatmaps}
+<<rcp7a,echo=F,results=hide>>=
+source("recipe7a.R")
+rollPicture("baserecipe7a",base.recipe.7a)
+
+rollPicture("ggRecipe7a",ggRecipe7a,rp.width=4.5,rp.height=5)
+
+@ 
+\testRecipe{baserecipe7a}
+\testRecipe{ggRecipe7a}
+
+<<rcp7b,echo=FALSE,results=hide>>=
+source("recipe7b.R")
+
+ggRecipe7b<-function(){
+  print(plot7.2)
+}
+rollPicture("baserecipe7b",base.recipe.7b)
+
+rollPicture("ggRecipe7b",ggRecipe7b,rp.width=4.5,rp.height=5)
+@ 
+
+\testRecipe{baserecipe7b}
+
+\testRecipe{ggRecipe7b}
+
+\end{document}
