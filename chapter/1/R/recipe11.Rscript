@@ -1,0 +1,27 @@
+# Notes   Creating graphs with maps recipes in ggplot2
+
+require("ggplot2")
+#install.packages("maps")
+
+require("maps")
+# recipe A
+world.df<-map_data("world")
+ggplot(world.df) +geom_polygon(aes(long,lat,group=group),colour="red",fill="white")+theme_bw()
+
+# recipe B - skip
+
+
+#recipe C
+all_states <- map_data("state")
+ggplot() +geom_polygon(data=all_states,aes(long,lat,group=group),colour="red",fill="white")+theme_bw()
+
+# recipe d
+require("sp")
+gpclibPermit()
+
+load(url("http://gadm.org/data/rda/GBR_adm1.RData"))
+uk.gadm <-gadm
+
+uk.ploy <-fortfy(uk.gadm,region="ID_1")
+ggplot(uk.poly,aes(log,lat,group=group)) +
+  geom_polygon(fill=group)+opts(legend.position='none')
