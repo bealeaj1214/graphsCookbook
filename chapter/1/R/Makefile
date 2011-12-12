@@ -24,4 +24,8 @@ chapter1.tex  :: chapter1.R recipe1?.R recipe2?.R recipe3?.R recipe4?.R recipe7?
 chapter01.tex :: chapter01.Rnw recipe7?.R recipe5?.R recipe4?.R
 	Rscript assignment.cmd $<
 
+
+legend.tex :: legend.Rnw
+	Rscript assignment.cmd $<
+
 all:: chapter1.pdf

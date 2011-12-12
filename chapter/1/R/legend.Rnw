@@ -1,0 +1,50 @@
+\documentclass[10pt]{article}
+\usepackage[landscape]{geometry}
+\usepackage{tikz}
+
+\begin{document}
+
+<<lsetup, echo=F, results=hide>>=
+  require("tikzDevice")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+
+width=7
+height=4
+
+@  
+
+<<lsetup2,echo=FALSE,results=hide>>=
+rollPicture<-function(baseName,plotFunc,
+                                            dirname="build/",typeName=".tex",
+                                            rp.standAlone=F,rp.width=width,rp.height=height,
+                                            rp.sanitize=FALSE,...){
+   filename=paste(dirname,baseName,typeName,sep="")
+
+    tikz(file=filename,standAlone=rp.standAlone,width=rp.width,height=rp.height,sanitize=rp.sanitize)
+
+    plotFunc(...)
+
+    garbage <- dev.off()
+    cat("finished",filename , "\n")
+    system(paste("./tikzDeviceRepair.sh" ,filename))
+ }
+
+
+@ 
+
+<<lsetup3>>=
+require("devtools")
+dev_mode()
+
+require("reshape2")
+require("ggplot2")
+@ 
+
+
+<<recipe10a>>=
+source("recipe10a.R")
+rollPicture("recipe10a",recipe10a)
+@ 
