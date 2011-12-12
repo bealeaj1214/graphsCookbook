@@ -226,7 +226,7 @@ simplePicture("ggRecipe8a",ggRecipe8a,rp.width=4.5,rp.height=5)
 \clearpage
 \testRecipe{ggRecipe8a}
 
-\clearPage
+\clearpage
 \section{Legends}
 \testRecipe{recipe10a}
 
