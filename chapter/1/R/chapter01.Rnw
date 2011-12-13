@@ -227,6 +227,23 @@ simplePicture("ggRecipe8a",ggRecipe8a,rp.width=4.5,rp.height=5)
 \testRecipe{ggRecipe8a}
 
 \clearpage
+\section{Multiple Plots}
+<<recipe9a,echo=F,results=hide>>=
+
+source("recipe09a.R")
+
+ggRecipe9a<-function() {
+  print(plot9.1)
+}
+
+simplePicture("baserecipe9a",base.recipe.9a,rp.width=4.5,rp.height=5)
+
+simplePicture("ggRecipe9a",ggRecipe9a,rp.width=4.5,rp.height=5)
+@ 
+testRecipe{baserecipe9a}
+%% Need to use clear page to manage latex memory
+\newpage
+\testRecipe{ggRecipe9a}
 \section{Legends}
 \testRecipe{recipe10a}
 \newpage
