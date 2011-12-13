@@ -10,9 +10,9 @@ main.text="Monthly Rainfall in\nmajor cities"
 ylab.text="Rainfall (mm)"
 xlab.text="Month of Year"
 
-base.recipe.10a <-function() {
+base.recipe.10b <-function() {
  plot(rain$Tokyo,type="l",col="red",
-      ylim=c(0,350),
+      ylim=c(0,250),
       main=main.text,
       xlab=xlab.text,
       ylab=ylab.text,
@@ -21,8 +21,10 @@ base.recipe.10a <-function() {
  lines(rain$London,type="l",col="green",lwd=2)
  lines(rain$Berlin,type="l",col="orange",lwd=2)
 
- legend("topright",
+ legend("top",
         legend=c("Tokyo","NewYork","London","Berlin"),
+        ncol=2,
+        cex=0.8,bty="n",
         col=c("red","blue","green","orange"),
         lty=1,lwd=2)
 
@@ -56,15 +58,15 @@ rain.melt<-melt(rain2,id=c("Month"))
 
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
-plot10.1=ggplot(rain.melt)+geom_line(aes(Month,value,group=variable,colour=variable)) +
+plot10.2=ggplot(rain.melt)+geom_line(aes(Month,value,group=variable,colour=variable)) +
   scale_colour_manual("",values=c("red","blue","green","orange"),
-                      guide=guide_legend(ncol=1))+
-  scale_x_discrete(xlab.text) + scale_y_continuous(ylab.text,limits=c(0,350))+
+                      guide=guide_legend(ncol=2))+
+  scale_x_discrete(xlab.text) + scale_y_continuous(ylab.text,limits=c(0,230))+
   theme_bw()+
   opts(title=main.text,
-       axis.text.x = theme_text(angle=90,hjust=1,vjust=0.5),
-       legend.position=c(0.90,0.88))
+       legend.position="top",
+       axis.text.x = theme_text(angle=90,hjust=1,vjust=0.5))
 
-recipe10a <-function() {
-doComboPlot(doBasePlot=base.recipe.10a,gplot=plot10.1)
+recipe10b <-function() {
+doComboPlot(doBasePlot=base.recipe.10b,gplot=plot10.2)
 }

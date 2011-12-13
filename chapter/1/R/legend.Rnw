@@ -48,7 +48,12 @@ require("ggplot2")
 @ 
 
 
-<<recipe10a>>=
+<<recipe10a,results=hide>>=
 source("recipe10a.R")
 rollPicture("recipe10a",recipe10a)
+@ 
+
+<<recipe10b,results=hide>>=
+source("recipe10b.R")
+rollPicture("recipe10b",recipe10b)
 @ 
