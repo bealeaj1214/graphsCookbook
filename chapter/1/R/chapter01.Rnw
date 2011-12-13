@@ -240,10 +240,11 @@ simplePicture("baserecipe9a",base.recipe.9a,rp.width=4.5,rp.height=5)
 
 simplePicture("ggRecipe9a",ggRecipe9a,rp.width=4.5,rp.height=5)
 @ 
-testRecipe{baserecipe9a}
+\testRecipe{baserecipe9a}
 %% Need to use clear page to manage latex memory
 \newpage
 \testRecipe{ggRecipe9a}
+\newpage
 \section{Legends}
 \testRecipe{recipe10a}
 \newpage
