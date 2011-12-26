@@ -21,7 +21,7 @@ chapter1.pdf :: chapter1.tex build/*.tex
 chapter1.tex  :: chapter1.R recipe1?.R recipe2?.R recipe3?.R recipe4?.R recipe7?.R
 	Rscript $< && touch chapter1.tex
 
-chapter01.tex :: chapter01.Rnw recipe7?.R recipe5?.R recipe4?.R 
+chapter01.tex :: chapter01.Rnw recipe7?.R recipe5?.R recipe4?.R recipe6?.R
 	Rscript assignment.cmd $<
 
 

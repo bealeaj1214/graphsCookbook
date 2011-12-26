@@ -25,7 +25,7 @@
 \newcommand{\testRecipe}[1]{\begin{figure}[!htb] \centering \input{#1} \end{figure}}
 \title{Chapter 1 from R Graphics Cookbook }
 \author{Alan Beale}
-\date{Spetember 24, 2011}
+\date{December 27, 2011}
 
 %% http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html
 %%\renewcommand\floatpagefraction{.9}
@@ -179,6 +179,24 @@ rollPicture("recipe5b",recipe5b)
 
 \clearpage
 \section{Adjusting X and Y axes limits}
+<<rp6a,echo=F,results=hide>>=
+source("recipe6a.R")
+rollPicture("recipe6a",recipe6a,rp.sanitize=TRUE)
+@ 
+\testRecipe{recipe6a}
+
+
+<<rp6b,echo=F,results=hide>>=
+source("recipe6b.R")
+rollPicture("recipe6b",recipe6b,rp.sanitize=TRUE)
+@ 
+\testRecipe{recipe6b}
+
+<<rp6c,echo=F,results=hide>>=
+source("recipe6c.R")
+rollPicture("recipe6c",recipe6c,rp.sanitize=TRUE)
+@ 
+\testRecipe{recipe6c}
 
 \clearpage
 \section{Heatmaps}
