@@ -42,7 +42,8 @@ plot11.1<-ggplot(world.df) +
   scale_colour_identity()+
   scale_fill_identity()+
   theme_bw()+
-  opts(plot.margin = unit(c(4, 0.5, 4, 0.5), "lines"))
+  opts(axis.title.x = theme_text(vjust=0.5),
+       plot.margin = unit(c(4, 0.5, 6, 0.5), "lines"))
 
 recipe11a <-function() {
   doComboPlot(doBasePlot=base.recipe.11a,gplot=plot11.1)

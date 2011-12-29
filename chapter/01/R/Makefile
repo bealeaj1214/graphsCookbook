@@ -3,6 +3,9 @@ all::
 TEXBIN=/usr/texbin
 PDFLATEX:=${TEXBIN}/xelatex -8bit -shell-escape
 
+# with tikz externalize
+#PDFLATEX:=${TEXBIN}/xelatex -8bit -shell-escape
+
 PATH:=${TEXBIN}:${PATH}
 export PATH
 

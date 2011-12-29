@@ -37,19 +37,19 @@ base.recipe.11b <-function() {
 
 #   adjust space around graph
 #  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
+
+#test <-map_data("usa")
+#ggplot(test)+ geom_polygon(aes(long,lat,group=group,fill="white",colour="black")) +scale_fill_identity()+ scale_colour_identity()
+
 all_states <- map_data("state")
-plot11.2 <-ggplot() +
-  geom_polygon(data=all_states,aes(long,lat,group=group),
-               colour="red",fill="white")+
+plot11.2 <-ggplot(data=all_states) +
+  geom_polygon(aes(long,lat,group=group), colour="red",fill="white")+
   scale_colour_identity()+
   scale_fill_identity()+
   theme_bw() +
-  opts(axis.text.x = theme_text(vjust=-1.25),
-       plot.margin = unit(c(4, 0.5, 4, 0.5), "lines"))
+  opts(plot.margin = unit(c(4, 0.5, 6, 0.5), "lines"),
+       axis.title.x = theme_text(vjust=-1.5))
 
-recipe11b <-function() {
-  doComboPlot(doBasePlot=base.recipe.11b,gplot=plot11.2)
-}
 
 ggRecipe11b<-function() {
   print(plot11.2)

@@ -38,11 +38,12 @@
 
 %%\addtolength{\textfloatsep}{-.5\textfloatsep}
 %%\addtolength{\dbltextfloatsep}{-.5\dbltextfloatsep}
-\usetikzlibrary{external} 
-\tikzexternalize % activate!
 
-\tikzset{external/system call={xelatex \tikzexternalcheckshellescape
-    -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+%%\usetikzlibrary{external} 
+%%\tikzexternalize % activate!
+
+%%\tikzset{external/system call={xelatex \tikzexternalcheckshellescape
+%%    -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 
 \begin{document}
 
@@ -341,16 +342,16 @@ simplePicture("ggRecipe11b",ggRecipe11b,rp.width=4.5,rp.height=4)
 
 \clearpage
 <<rcpe11c,echo=FALSE,results=hide>>=
-source("recipe11c.R")
+#source("recipe11c.R")
 
-rollPicture("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
+#rollPicture("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
 
-rollPicture("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
+#rollPicture("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
 @ 
 
 %%\testRecipe{baserecipe11c}
 %% Need to use clear page to manage latex memory
-\clearpage
+%%\clearpage
 %%\testRecipe{ggRecipe11c}
 
 \end{document}
