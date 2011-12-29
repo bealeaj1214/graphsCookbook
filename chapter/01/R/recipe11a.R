@@ -34,15 +34,15 @@ base.recipe.11a <-function() {
 #  increase space between title and graph - bold title text
 #  opts(plot.title = theme_text(vjust= 1.25,face="bold"))
 
-#   adjust space around graph
-#  opts(plot.margin = unit(c(2, 2, 2, 1), "lines"))
+
 world.df<-map_data("world")
 
 plot11.1<-ggplot(world.df) +
   geom_polygon(aes(long,lat,group=group),colour="red",fill="white")+
   scale_colour_identity()+
   scale_fill_identity()+
-  theme_bw()
+  theme_bw()+
+  opts(plot.margin = unit(c(4, 0.5, 4, 0.5), "lines"))
 
 recipe11a <-function() {
   doComboPlot(doBasePlot=base.recipe.11a,gplot=plot11.1)

@@ -43,7 +43,9 @@ plot11.2 <-ggplot() +
                colour="red",fill="white")+
   scale_colour_identity()+
   scale_fill_identity()+
-  theme_bw()
+  theme_bw() +
+  opts(axis.text.x = theme_text(vjust=-1.25),
+       plot.margin = unit(c(4, 0.5, 4, 0.5), "lines"))
 
 recipe11b <-function() {
   doComboPlot(doBasePlot=base.recipe.11b,gplot=plot11.2)

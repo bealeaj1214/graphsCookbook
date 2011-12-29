@@ -22,6 +22,6 @@ gpclibPermit()
 load(url("http://gadm.org/data/rda/GBR_adm1.RData"))
 uk.gadm <-gadm
 
-uk.ploy <-fortfy(uk.gadm,region="ID_1")
-ggplot(uk.poly,aes(log,lat,group=group)) +
-  geom_polygon(fill=group)+opts(legend.position='none')
+uk.poly <-fortify(uk.gadm,region="ID_1")
+ggplot(uk.poly,aes(long,lat,group=group)) +
+  geom_polygon(aes(fill=group))+opts(legend.position='none')

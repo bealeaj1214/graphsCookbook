@@ -1,7 +1,7 @@
 \documentclass[10pt]{article}
 \usepackage{hyperref}
 \usepackage{booktabs}
-\usepackage{xfrac}
+%\usepackage{xfrac}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[landscape]{geometry}
@@ -38,6 +38,11 @@
 
 %%\addtolength{\textfloatsep}{-.5\textfloatsep}
 %%\addtolength{\dbltextfloatsep}{-.5\dbltextfloatsep}
+\usetikzlibrary{external} 
+\tikzexternalize % activate!
+
+\tikzset{external/system call={xelatex \tikzexternalcheckshellescape
+    -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 
 \begin{document}
 
@@ -130,6 +135,42 @@ rollPicture("recipe2a",recipe2a)
 %% line graph\\
 \clearpage
 \section{ Bar charts}
+<<barcharts,echo=FALSE,results=hide>>=
+
+source("recipe3a.R")
+
+recipe3a<-function() {
+  doComboPlot(doBasePlot=base.recipe.3a,gplot=plot3.1)
+}
+
+rollPicture("recipe3a",recipe3a)
+
+source("recipe3b.R")
+
+recipe3b<-function() {
+  doComboPlot(doBasePlot=base.recipe.3b,gplot=plot3b)
+}
+
+rollPicture("recipe3b",recipe3b)
+
+source("recipe3c.R")
+
+recipe3c<-function() {
+  doComboPlot(doBasePlot=base.recipe.3c,gplot=plot3c)
+}
+
+rollPicture("recipe3c",recipe3c)
+
+
+source("recipe3d.R")
+
+recipe3d<-function(){
+  doComboPlot(doBasePlot=base.recipe.3d,gplot=plot3d)
+}
+
+rollPicture("recipe3d",recipe3d)
+
+@ 
 \Large{Recipe 3a}
 \testRecipe{recipe3a}
 bar chart\\
@@ -262,8 +303,9 @@ simplePicture("ggRecipe9a",ggRecipe9a,rp.width=4.5,rp.height=5)
 %% Need to use clear page to manage latex memory
 \newpage
 \testRecipe{ggRecipe9a}
-\newpage
+\clearpage
 \section{Legends}
+
 \testRecipe{recipe10a}
 \newpage
 \testRecipe{recipe10b}
@@ -290,11 +332,25 @@ source("recipe11b.R")
 
 simplePicture("baserecipe11b",base.recipe.11b,rp.width=4.5,rp.height=5)
 
-simplePicture("ggRecipe11b",ggRecipe11b,rp.width=4.5,rp.height=5)
+simplePicture("ggRecipe11b",ggRecipe11b,rp.width=4.5,rp.height=4)
 @ 
 \testRecipe{baserecipe11b}
 %% Need to use clear page to manage latex memory
 \newpage
 \testRecipe{ggRecipe11b}
+
+\clearpage
+<<rcpe11c,echo=FALSE,results=hide>>=
+source("recipe11c.R")
+
+rollPicture("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
+
+rollPicture("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
+@ 
+
+%%\testRecipe{baserecipe11c}
+%% Need to use clear page to manage latex memory
+\clearpage
+%%\testRecipe{ggRecipe11c}
 
 \end{document}
