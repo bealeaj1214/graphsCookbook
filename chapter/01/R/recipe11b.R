@@ -40,15 +40,20 @@ base.recipe.11b <-function() {
 
 #test <-map_data("usa")
 #ggplot(test)+ geom_polygon(aes(long,lat,group=group,fill="white",colour="black")) +scale_fill_identity()+ scale_colour_identity()
-
+#
+#ggplot(usa_map)+ geom_polygon(aes(long,lat,group=group,colour="black"), fill="transparent") + scale_colour_identity()
+#ggplot() +geom_polygon(data=usa_map,aes(long,lat,group=group,colour="black"), fill="transparent",legend=FALSE) + scale_colour_identity()
+usa_map <-map_data("usa")
 all_states <- map_data("state")
 plot11.2 <-ggplot(data=all_states) +
-  geom_polygon(aes(long,lat,group=group), colour="red",fill="white")+
+  geom_polygon(aes(long,lat,group=group), colour="red",fill="white",legend=FALSE)+
+  geom_polygon(data=usa_map,aes(long,lat,group=group,colour="black"), fill="transparent",legend=FALSE) +
   scale_colour_identity()+
   scale_fill_identity()+
   theme_bw() +
   opts(plot.margin = unit(c(4, 0.5, 6, 0.5), "lines"),
-       axis.title.x = theme_text(vjust=-1.5))
+       axis.title.x = theme_text(vjust=-1.5),
+       legend.position = "none")
 
 
 ggRecipe11b<-function() {
