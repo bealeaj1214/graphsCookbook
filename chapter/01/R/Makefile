@@ -1,8 +1,7 @@
 all::
 
-TEXBIN=/usr/texbin
-PDFLATEX:=${TEXBIN}/xelatex -8bit -shell-escape
-
+TEXBIN=/usr/texbin/
+PDFLATEX:=${TEXBIN}/xelatex
 # with tikz externalize
 #PDFLATEX:=${TEXBIN}/xelatex -8bit -shell-escape
 

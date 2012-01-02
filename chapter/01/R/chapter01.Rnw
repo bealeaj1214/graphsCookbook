@@ -11,8 +11,10 @@
 \usepackage{ragged2e}
 \usepackage{afterpage}
 \usepackage[small,compact]{titlesec}
-%\usepackage[pdftex]{graphicx}
-%\DeclareGraphicsExtensions{.png,.pdf}
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.png,.pdf}
+
+\usepackage[T1]{fontenc}
 
 % attempt to use fontspec to select fonts 
 \usepackage{fontspec,xltxtra,xunicode}
@@ -23,6 +25,10 @@
 %%\newcommand{\placeRecipe}[1]{\begin{minipage}[h]{\textwidth}\vspace{-144pt}\input{#1}\end{minipage}}
 \newcommand{\placeRecipe}[1]{\bigskip \noindent \input{#1} \bigskip}
 \newcommand{\testRecipe}[1]{\begin{figure}[!htb] \centering \input{#1} \end{figure}}
+\newcommand{\placePdf}[1]{\begin{figure}[!htb] \centering \includegraphics[scale=0.60]{#1} \end{figure}}
+
+% add additional graphics path
+\graphicspath{{./build/}}
 \title{Chapter 1 from R Graphics Cookbook }
 \author{Alan Beale}
 \date{December 27, 2011}
@@ -91,6 +97,21 @@ simplePicture<-function(baseName,plotFunc,
 
  garbage <- dev.off()
 }
+
+rollPdf<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".pdf",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ pdf(file=filename,width=rp.width,height=rp.height)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+ cat("finished",filename , "\n")
+}
+
 @ 
 \section{Scatter plot}
 <<rp1a,echo=F,results=hide>>=
@@ -342,16 +363,24 @@ simplePicture("ggRecipe11b",ggRecipe11b,rp.width=4.5,rp.height=4)
 
 \clearpage
 <<rcpe11c,echo=FALSE,results=hide>>=
-#source("recipe11c.R")
+source("recipe11c.R")
 
-#rollPicture("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
+rollPdf("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
+rollPicture("baserecipe11c",base.recipe.11c,rp.width=4.5,rp.height=5)
 
-#rollPicture("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
+rollPicture("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
+rollPdf("ggRecipe11c",ggRecipe11.3,rp.width=4.5,rp.height=4)
 @ 
 
+\placePdf{baserecipe11c}
 %%\testRecipe{baserecipe11c}
 %% Need to use clear page to manage latex memory
-%%\clearpage
+\clearpage
+\placePdf{ggRecipe11c}
 %%\testRecipe{ggRecipe11c}
+%%\begin{figure}[htb]
+%%  \centering
+%%  \includegraphics{ggRecipe11c}
+%%\end{figure}
 
 \end{document}
