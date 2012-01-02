@@ -1,0 +1,9 @@
+# ignore build directory
+/build
+
+#ignore R history
+.Rhistory
+
+#ignore generated artifacts
+chapter09.pdf
+chapter09.tex

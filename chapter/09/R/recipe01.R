@@ -81,7 +81,7 @@ w.aug<-w[,c(1,4)]
 names(w.aug) <-c("country","measure")
 #upper case all country names
 w.aug$country<-toupper(w.aug$country)
-# use merge to ad CO2 measure data to map
+# use merge to add CO2 measure data to map
 world.df.merge<-merge(world.df.co,w.aug,by.x="ucountry",by.y="country",all.y=FALSE)
 
 # use subset to drop all countries with data

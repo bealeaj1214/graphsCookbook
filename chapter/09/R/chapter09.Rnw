@@ -1,0 +1,166 @@
+\documentclass[10pt]{article}
+\usepackage{hyperref}
+\usepackage{booktabs}
+%\usepackage{xfrac}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[landscape]{geometry}
+\usepackage{enumerate}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{afterpage}
+\usepackage[small,compact]{titlesec}
+%%\usepackage[pdftex]{graphicx}
+%%\DeclareGraphicsExtensions{.png,.pdf}
+
+\usepackage[T1]{fontenc}
+
+% attempt to use fontspec to select fonts 
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
+
+%%\newcommand{\placeRecipe}[1]{\noindent \begin{quote}\input{#1}\end{quote}}
+%%\newcommand{\placeRecipe}[1]{\begin{minipage}[h]{\textwidth}\vspace{-144pt}\input{#1}\end{minipage}}
+\newcommand{\placeRecipe}[1]{\bigskip \noindent \input{#1} \bigskip}
+\newcommand{\testRecipe}[1]{\begin{figure}[!htb] \centering \input{#1} \end{figure}}
+\newcommand{\placePdf}[1]{\begin{figure}[!htb] \centering \includegraphics[scale=0.60]{#1} \end{figure}}
+
+% add additional graphics path
+\graphicspath{{./build/}}
+\title{Chapter 9 from R Graphics Cookbook }
+\author{Alan Beale}
+\date{January 02, 2012}
+
+%%\addtolength{\textfloatsep}{-.5\textfloatsep}
+%%\addtolength{\dbltextfloatsep}{-.5\dbltextfloatsep}
+
+%%\usetikzlibrary{external} 
+%%\tikzexternalize % activate!
+
+%%\tikzset{external/system call={xelatex \tikzexternalcheckshellescape
+%%    -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+
+\begin{document}
+
+\sffamily 
+\maketitle
+
+<<setup, echo=F, results=hide>>=
+require("tikzDevice")
+options(tikzDefaultEngine = "xetex")
+options( tikzLatex = "/usr/texbin/xelatex" )
+options( tikzXelatex = "/usr/texbin/xelatex" )
+options( tikzMetricsDictionary = "build/4tikzMetricsDictionary" )
+
+width=7
+height=4
+
+@
+
+<<setup2,echo=FALSE,results=hide>>=
+
+rollPicture<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".tex",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ tikz(file=filename,standAlone=rp.standAlone,width=rp.width,height=rp.height,sanitize=rp.sanitize)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+ cat("finished",filename , "\n")
+ system(paste("./tikzDeviceRepair.sh" ,filename))
+}
+
+simplePicture<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".tex",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ tikz(file=filename,standAlone=rp.standAlone,width=rp.width,height=rp.height,sanitize=rp.sanitize)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+}
+
+rollPdf<-function(baseName,plotFunc,
+                      dirname="build/",typeName=".pdf",
+                      rp.standAlone=F,rp.width=width,rp.height=height,
+                      rp.sanitize=FALSE,...){
+ filename=paste(dirname,baseName,typeName,sep="")
+
+ pdf(file=filename,width=rp.width,height=rp.height)
+
+ plotFunc(...)
+
+ garbage <- dev.off()
+ cat("finished",filename , "\n")
+}
+
+@ 
+\section{Plotting global data by countries on a world map}
+<<rcp01,echo=FALSE,results=hide>>=
+source("recipe01.R")
+
+rollPicture("baserecipe01a",book.recipe.01a,rp.width=4.5,rp.height=5,rp.sanitize=TRUE)
+
+rollPicture("ggRecipe01a",ggRecipe01a,rp.width=4.5,rp.height=4,rp.sanitize=TRUE)
+@ 
+
+\testRecipe{baserecipe01a}
+\clearpage
+\testRecipe{ggRecipe01a}
+\clearpage
+\section{Creating graphs with regional maps}
+<<rcp02a,echo=FALSE,results=hide>>=
+source("recipe02a.R")
+
+rollPicture("bookrecipe02a",book.recipe.02a,rp.width=4.5,rp.height=5)
+rollPicture("ggRecipe02a",ggRecipe02a,rp.width=4.5,rp.height=5)
+@ 
+\testRecipe{bookrecipe02a}
+\clearpage
+\testRecipe{ggRecipe02a}
+\clearpage
+
+<<rcp02b,echo=FALSE,results=hide>>=
+source("recipe02b.R")
+
+rollPicture("bookrecipe02b",book.recipe.02b,rp.width=4.5,rp.height=5)
+rollPicture("ggRecipe02b",ggRecipe02b,rp.width=4.5,rp.height=4.5)
+@ 
+\testRecipe{bookrecipe02b}
+\clearpage
+\testRecipe{ggRecipe02b}
+\clearpage
+
+<<rcp02c,echo=FALSE,results=hide>>=
+source("recipe02c.R")
+
+rollPicture("bookrecipe02c",book.recipe.02c,rp.width=4.5,rp.height=5)
+rollPicture("ggRecipe02c",ggRecipe02c,rp.width=4.5,rp.height=4.5)
+@ 
+
+\testRecipe{bookrecipe02c}
+\clearpage
+\testRecipe{ggRecipe02c}
+\clearpage
+<<rcp02d,echo=FALSE,results=hide>>=
+source("recipe02d.R")
+
+rollPicture("bookrecipe02d",book.recipe.02d,rp.width=4.5,rp.height=5)
+rollPicture("ggRecipe02d",ggRecipe02d,rp.width=4.5,rp.height=4.5)
+@ 
+
+\testRecipe{bookrecipe02d}
+\clearpage
+\testRecipe{ggRecipe02d}
+\clearpage
+\section{Plotting data on Google maps}
+\end{document}
