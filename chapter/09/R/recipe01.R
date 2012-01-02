@@ -75,19 +75,28 @@ world.df$ucountry<-toupper(world.df$region)
 x$ucountry<-toupper(x$names)
 world.df.co<-subset(world.df,ucountry %in% toupper(w$country))
 
-#findInterval(x$measure[!is.na(x$measure)],sd$values)
+#extract country and CO2 data from the w data frame
 w.aug<-w[,c(1,4)]
+# rename columns for ease of use
 names(w.aug) <-c("country","measure")
+#upper case all country names
 w.aug$country<-toupper(w.aug$country)
+# use merge to ad CO2 measure data to map
 world.df.merge<-merge(world.df.co,w.aug,by.x="ucountry",by.y="country",all.y=FALSE)
 
+# use subset to drop all countries with data
 world.df.co2<-subset(world.df.merge,!is.na(measure))
 #merge operation didn't preserve order
 world.df.co2<-world.df.co2[order(world.df.co2$order),]
+
+#use findInteral trick from above to code  CO2 values
 world.df.co2$codedMeas<-factor(findInterval(world.df.co2$measure,sd$values))
 
 # use of manual fill scale
 #http://learnr.wordpress.com/2009/04/15/ggplot2-qualitative-colour-palettes/
+
+# plot the geo-coded data ploygon and overlap all world map with
+# transparent fill outline all countries
 
 plot01.1 <-ggplot(data=world.df.co2) +
   geom_polygon(aes(long,lat,group=group,fill=codedMeas),
