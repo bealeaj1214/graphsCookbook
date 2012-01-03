@@ -9,6 +9,7 @@ book.recipe.02b<-function() {
 ny_map<-map_data("county","new york")
 plot02.2 <-ggplot(ny_map)+
   geom_polygon(aes(long,lat,group=group),colour="black",fill="white")+
+  coord_equal(ratio = 1.2)+
   theme_bw()+
   opts(title =map.title,
        plot.title = theme_text(vjust= 1.25),

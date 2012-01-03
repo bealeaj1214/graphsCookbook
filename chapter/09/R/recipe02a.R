@@ -77,6 +77,7 @@ plot02.1 <-ggplot(data=choro,aes(long,lat,group=group))+
   scale_fill_manual("murder rate",values=colors,
                     breaks=levels(choro$codeMurders),
                     labels=as.character(round(breaks[-1])) ) +
+  coord_equal(ratio = 1)+
   theme_bw() +
   opts(title =map.title,
        plot.title = theme_text(vjust= 1.25),
@@ -84,7 +85,7 @@ plot02.1 <-ggplot(data=choro,aes(long,lat,group=group))+
        axis.title.y=theme_blank(),
        axis.text.x=theme_blank(),
        axis.text.y=theme_blank(),
-       plot.margin = unit(c(5, 0.5, 7, 0.5), "lines"))
+       plot.margin = unit(c(2, 0.5, 3, 0.5), "lines"))
 
 ggRecipe02a<-function() {
   print(plot02.1)

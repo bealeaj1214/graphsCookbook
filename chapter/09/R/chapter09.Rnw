@@ -122,7 +122,7 @@ rollPicture("ggRecipe01a",ggRecipe01a,rp.width=4.5,rp.height=4,rp.sanitize=TRUE)
 source("recipe02a.R")
 
 rollPicture("bookrecipe02a",book.recipe.02a,rp.width=4.5,rp.height=5)
-rollPicture("ggRecipe02a",ggRecipe02a,rp.width=4.5,rp.height=5)
+rollPicture("ggRecipe02a",ggRecipe02a,rp.width=5,rp.height=5.25)
 @ 
 \testRecipe{bookrecipe02a}
 \clearpage
@@ -133,7 +133,7 @@ rollPicture("ggRecipe02a",ggRecipe02a,rp.width=4.5,rp.height=5)
 source("recipe02b.R")
 
 rollPicture("bookrecipe02b",book.recipe.02b,rp.width=4.5,rp.height=5)
-rollPicture("ggRecipe02b",ggRecipe02b,rp.width=4.5,rp.height=4.5)
+rollPicture("ggRecipe02b",ggRecipe02b,rp.width=4.5,rp.height=5)
 @ 
 \testRecipe{bookrecipe02b}
 \clearpage
@@ -144,7 +144,7 @@ rollPicture("ggRecipe02b",ggRecipe02b,rp.width=4.5,rp.height=4.5)
 source("recipe02c.R")
 
 rollPicture("bookrecipe02c",book.recipe.02c,rp.width=4.5,rp.height=5)
-rollPicture("ggRecipe02c",ggRecipe02c,rp.width=4.5,rp.height=4.5)
+rollPicture("ggRecipe02c",ggRecipe02c,rp.width=4.5,rp.height=5)
 @ 
 
 \testRecipe{bookrecipe02c}
@@ -155,7 +155,7 @@ rollPicture("ggRecipe02c",ggRecipe02c,rp.width=4.5,rp.height=4.5)
 source("recipe02d.R")
 
 rollPicture("bookrecipe02d",book.recipe.02d,rp.width=4.5,rp.height=5)
-rollPicture("ggRecipe02d",ggRecipe02d,rp.width=4.5,rp.height=4.5)
+rollPicture("ggRecipe02d",ggRecipe02d,rp.width=4.5,rp.height=5)
 @ 
 
 \testRecipe{bookrecipe02d}
