@@ -158,7 +158,25 @@ rollPicture("recipe4a",recipe4a)
 \testRecipe{recipe4a}
 \clearpage
 \section{Including or excluding outliers}
+
+<<recipe05,echo=FALSE, results=hide>>=
+source("recipe05.R")
+
+rollPicture("recipe5a",recipe5a)
+@ 
+
+\testRecipe{recipe5a}
+\clearpage
 \section{Creating horizontal box plots}
+
+<<recipe06,echo=FALSE, results=hide>>=
+source("recipe06.R")
+
+rollPicture("recipe6a",recipe6a)
+@ 
+
+\testRecipe{recipe6a}
+\clearpage
 \section{Changing box styling}
 \section{Adjusting the extent of plot whiskers outside the box}
 \section{Showing the number of observations}
