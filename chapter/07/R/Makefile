@@ -18,7 +18,7 @@ export PDFLATEX
 
 
 
-chapter07.tex :: chapter07.Rnw recipe01.R #recipe02?.R
+chapter07.tex :: chapter07.Rnw recipe01.R recipe02.R recipe03.R recipe04.R
 	Rscript assignment.cmd $<
 
 

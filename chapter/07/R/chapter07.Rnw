@@ -105,11 +105,13 @@ rollPdf<-function(baseName,plotFunc,
 
 @ 
 
-<<localSetup,echo=FALSE, results=hide>>=
+<<localSetup>>=
 require("devtools")
 dev_mode()
 
 require("reshape2")
+
+install_github("ggplot2")
 require("ggplot2")
 
 source("comboPlot.R")
@@ -137,5 +139,27 @@ rollPicture("recipe2a",recipe2a)
 \testRecipe{recipe2a}
 \clearpage
 \section{Varying box widths by number of observations}
+<<recipe03,echo=FALSE, results=hide>>=
+source("recipe03.R")
+
+rollPicture("recipe3a",book.recipe.03)
+@ 
+
+\testRecipe{recipe3a}
+\clearpage
 \section{Creating Box plots with notches}
+
+<<recipe4,echo=FALSE, results=hide>>=
+source("recipe04.R")
+
+rollPicture("recipe4a",recipe4a)
+@ 
+
+\testRecipe{recipe4a}
+\clearpage
+\section{Including or excluding outliers}
+\section{Creating horizontal box plots}
+\section{Changing box styling}
+\section{Adjusting the extent of plot whiskers outside the box}
+\section{Showing the number of observations}
 \end{document}
