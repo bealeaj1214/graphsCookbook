@@ -11,8 +11,8 @@
 \usepackage{ragged2e}
 \usepackage{afterpage}
 \usepackage[small,compact]{titlesec}
-\usepackage[pdftex]{graphicx}
-\DeclareGraphicsExtensions{.png,.pdf}
+%%\usepackage[pdftex]{graphicx}
+%%\DeclareGraphicsExtensions{.png,.pdf}
 
 \usepackage[T1]{fontenc}
 
