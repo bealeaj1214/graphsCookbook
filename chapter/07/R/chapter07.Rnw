@@ -104,8 +104,38 @@ rollPdf<-function(baseName,plotFunc,
 }
 
 @ 
+
+<<localSetup,echo=FALSE, results=hide>>=
+require("devtools")
+dev_mode()
+
+require("reshape2")
+require("ggplot2")
+
+source("comboPlot.R")
+@ 
 \section{Creating box plots narrow boxes for a small number of variables}
+
+<<recipe01,echo=FALSE,results=hide>>=
+source("recipe01.R")
+
+rollPicture("recipe1a",recipe1a)
+rollPicture("recipe1b",recipe1b)
+@ 
+
+\testRecipe{recipe1a}
+
+\testRecipe{recipe1b}
+\clearpage
 \section{Grouping over a variable}
+<<recipe02,echo=FALSE,results=hide>>=
+source("recipe02.R")
+
+rollPicture("recipe2a",recipe2a)
+@ 
+
+\testRecipe{recipe2a}
+\clearpage
 \section{Varying box widths by number of observations}
 \section{Creating Box plots with notches}
 \end{document}
