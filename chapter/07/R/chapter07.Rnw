@@ -177,7 +177,19 @@ rollPicture("recipe6a",recipe6a)
 
 \testRecipe{recipe6a}
 \clearpage
-\section{Changing box styling}
+%%\section{Changing box styling}
 \section{Adjusting the extent of plot whiskers outside the box}
-\section{Showing the number of observations}
+<<recipe08,echo=FALSE,results=hide>>=
+source("recipe08.R")
+
+rollPicture("recipe8a",recipe8a)
+
+rollPicture("recipe8b",recipe8b)
+
+@ 
+
+\testRecipe{recipe8a}
+\clearpage
+\testRecipe{recipe8b}
+%%\section{Showing the number of observations}
 \end{document}

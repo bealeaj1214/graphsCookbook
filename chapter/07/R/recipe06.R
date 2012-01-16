@@ -19,7 +19,7 @@ metals.melt <-melt(metals2)
 #http://stackoverflow.com/questions/5677885/ignore-outliers-in-ggplot2-boxplot
 #
 
-#turn off outier.shape
+
 plot06.1<-ggplot(metals.melt,aes(variable,value))+
   geom_boxplot() + coord_flip() +
   xlab("") +ylab("") +theme_bw()+
