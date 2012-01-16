@@ -39,9 +39,9 @@ book.recipe.08b <-function(){
 }
 
 
-main.title2="Summary of metal concentrations\n by Site (ceof=5)"
+main.title2="Summary of metal concentrations\n by Site (ceof=20)"
 plot08.2<-ggplot(metals.melt,aes(variable,value))+
-  geom_boxplot(coef=5.0,outlier.colour="red") +
+  geom_boxplot(coef=20.0,outlier.colour="red") +
   xlab("") +ylab("") +theme_bw()+
   opts(title=main.title2)
 
