@@ -105,7 +105,7 @@ rollPdf<-function(baseName,plotFunc,
 
 @ 
 
-<<localSetup>>=
+<<localSetup ,echo=FALSE, results=hide>>=
 require("devtools")
 dev_mode()
 

@@ -38,10 +38,19 @@ book.recipe.08b <-function(){
           main="Summary of metal concentrations\n by Site (range=0)")
 }
 
+# There is no ggplot2 equivalent of range 0
+# we can  simulate this by using a linerange from min to max
 
-main.title2="Summary of metal concentrations\n by Site (ceof=20)"
-plot08.2<-ggplot(metals.melt,aes(variable,value))+
-  geom_boxplot(coef=20.0,outlier.colour="red") +
+metals.range<-
+  as.data.frame(t(vapply(metals2,range,numeric(2),na.rm=TRUE)))
+names(metals.range) <-c("min","max")
+metals.range$col<-row.names(metals.range)
+                               
+
+main.title2="Summary of metal concentrations\n by Site"
+plot08.2<-ggplot(metals.range)+
+  geom_linerange(aes(col,ymin=min,ymax=max,group=1))+
+  geom_boxplot(data=metals.melt,aes(variable,value),outlier.shape=NA) +
   xlab("") +ylab("") +theme_bw()+
   opts(title=main.title2)
 
