@@ -13,7 +13,7 @@
 \usepackage[small,compact]{titlesec}
 %%\usepackage[pdftex]{graphicx}
 %%\DeclareGraphicsExtensions{.png,.pdf}
-
+\graphicspath{{./build/}}
 \usepackage[T1]{fontenc}
 
 % attempt to use fontspec to select fonts 
@@ -104,6 +104,15 @@ rollPdf<-function(baseName,plotFunc,
 }
 
 @ 
+
+<<setup3,echo=FALSE,results=hide>>=
+require("devtools")
+dev_mode()
+
+require("ggplot2")
+require(grid)
+@ 
+
 \section{Plotting global data by countries on a world map}
 <<rcp01,echo=FALSE,results=hide>>=
 source("recipe01.R")
@@ -163,4 +172,13 @@ rollPicture("ggRecipe02d",ggRecipe02d,rp.width=4.5,rp.height=5)
 \testRecipe{ggRecipe02d}
 \clearpage
 \section{Plotting data on Google maps}
+<<rcp05,echo=FALSE,results=hide>>=
+source("londonAir.R")
+rollPdf("londonGoogle",googleLondon,rp.width=4.5,rp.height=5)
+rollPdf("londonGGplot",ggLondon,rp.width=4.5,rp.height=5)
+@ 
+
+\includegraphics{londonGoogle}
+\clearpage
+\includegraphics{londonGGplot}
 \end{document}

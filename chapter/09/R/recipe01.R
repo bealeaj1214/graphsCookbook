@@ -102,7 +102,7 @@ plot01.1 <-ggplot(data=world.df.co2) +
   geom_polygon(aes(long,lat,group=group,fill=codedMeas),
                colour="gray")+
   geom_polygon(data=world.df,aes(long,lat,group=group),
-               colour="gray",fill="transparent",legend=FALSE)+
+               colour="gray",fill="transparent",show_guide=FALSE)+
   scale_fill_manual("C02 score",values=colors) +
   theme_bw() +
   opts(title =map.title,
